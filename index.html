@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AltMess</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <img src="1.png" alt="AltMess Logo" style="max-width: 1000px ; height: 10rem;">
+    </header>
+
+    <main>
+        <section id="tiffin-options">
+            <h2>Select Your Tiffin</h2>
+
+            <div class="tiffin">
+    <div class="tiffin-info">
+        <h3>Tiffin Box 1</h3>
+        <ul>
+            <li>Rice, Dal, Vegetables</li>
+            <li>Curd and Salad</li>
+            <li>Light and Healthy</li>
+        </ul>
+        <p class="price">₹100</p>
+    </div>
+    <div class="quantity-selector">
+        <button onclick="updateQuantity('veg-quantity', 'decrement', 'veg')">-</button>
+        <input type="text" id="veg-quantity" value="0" readonly>
+        <button onclick="updateQuantity('veg-quantity', 'increment', 'veg')">+</button>
+    </div>
+</div>
+
+<div class="tiffin">
+    <div class="tiffin-info">
+        <h3>Tiffin Box 2</h3>
+        <ul>
+            <li>Rice, Dal, Vegetables</li>
+            <li>Curd and Salad</li>
+            <li>Light and Healthy</li>
+        </ul>
+        <p class="price">₹150</p>
+    </div>
+    <div class="quantity-selector">
+        <button onclick="updateQuantity('nonveg-quantity', 'decrement', 'nonveg')">-</button>
+        <input type="text" id="nonveg-quantity" value="0" readonly>
+        <button onclick="updateQuantity('nonveg-quantity', 'increment', 'nonveg')">+</button>
+    </div>
+</div>
+
+<div class="tiffin">
+    <div class="tiffin-info">
+        <h3>Tiffin Box 3</h3>
+        <ul>
+            <li>Rice, Dal, Paneer</li>
+            <li>Curd and Salad</li>
+            <li>Rich and Nutritious</li>
+        </ul>
+        <p class="price">₹200</p>
+    </div>
+    <div class="quantity-selector">
+        <button onclick="updateQuantity('special-quantity', 'decrement', 'special')">-</button>
+        <input type="text" id="special-quantity" value="0" readonly>
+        <button onclick="updateQuantity('special-quantity', 'increment', 'special')">+</button>
+    </div>
+</div>
+            <div class="cart-summary">
+                <p id="total-price">Total Price: ₹0</p>
+            </div>
+
+            <button onclick="showDetailsForm()">Next</button>
+        </section>
+
+        <section id="student-details" class="form-section" style="display: none;">
+            <h2>Enter Your Details</h2>
+            <label for="delivery-location">Delivery Location:</label>
+            <select id="delivery-location">
+                <option value="">Select the delivery location</option>
+                <option value="A&B">A & B</option>
+                <option value="C">C</option>
+                <option value="D&F">D & F</option>
+                <option value="L1&L2">L1 & L2</option>
+                <option value="J&K">J & K</option>
+            </select>
+
+            <form onsubmit="return validateForm();">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" title="Please enter a 10-digit mobile number" required>
+
+                <label for="hostel">Hostel Number</label>
+                <input type="text" id="hostel" name="hostel" required>
+
+                <label for="room">Room Number</label>
+                <input type="text" id="room" name="room" pattern="\d+" title="Room number should only contain digits" required>
+
+                <div class="total-price">
+                    Total Price: <span id="total-price-display">₹0</span>
+                </div>
+
+                <div class="button-container">
+                    <button type="submit">Proceed to Place Order</button>
+                    <button type="button" onclick="goBack()">Back</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="thank-you-page" class="thank-you-page" style="display: none;">
+            <h2>Thank You! Your Order Has Been Placed</h2>
+            <div class="qr-code">
+                <img src="payment.png" alt="QR Code" width="150" position="center" >
+            </div>
+            <center><p class="note"><b>Scan the QR code and pay to confirm the order</b></p></center>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AltMess. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

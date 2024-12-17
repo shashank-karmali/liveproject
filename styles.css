@@ -1,0 +1,141 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('./cover.jpeg') no-repeat center center fixed;
+    background-size: cover; /* Ensures the image covers the entire viewport */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    backdrop-filter: brightness(0.3);
+}
+
+/* Optional: Add overlay for text readability */
+
+
+header {
+    /* Sky blue for the header */
+
+    padding: 0rem;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+
+}
+
+main {
+    padding: 1rem;
+    max-width: 800px;
+    margin: auto;
+    flex: 1; /* Ensures main takes up available space */
+    background-color: #ffffff; /* White background for contrast */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tiffin {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f5f5f5; /* Light gray for cards */
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tiffin-info h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #2e8b57; /* Sea green for headings */
+}
+
+.tiffin-info li {
+    margin: 0;
+    left-padding: 1rem;
+    font-size: 1rem;
+    color: #11111; /* Sea green for headings */
+}
+.quantity-selector {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.quantity-selector button {
+    background-color: #f9d854; /* Light salmon for buttons */
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.quantity-selector button:hover {
+    background-color: #ff7f50; /* Coral for hover state */
+}
+
+.quantity-selector input {
+    width: 2rem;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fffaf0; /* Floral white for input background */
+}
+
+button {
+    display: block;
+    margin: 2rem auto;
+    background-color: #f9d854; /* Light salmon for primary buttons */
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #ff7f50; /* Coral for hover state */
+    transform: scale(1.05);
+}
+
+.cart-summary {
+    margin: 2rem 0;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2e8b57; /* Sea green for summary text */
+}
+
+.form-section {
+    display: none;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #333; /* Steel blue for footer */
+    color: white;
+    margin-top: 2rem;
+    flex-shrink: 0; /* Ensures footer stays at the bottom */
+}
+
+input[type="text"], input[type="tel"], select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f0fff0; /* Honeydew for input fields */
+}
+
+@media (max-width: 600px) {
+    button {
+        width: 50%;
+    }
+}
