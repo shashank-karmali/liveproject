@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background: url('./Cover.jpeg') no-repeat center center fixed;
-    background-size: cover; /* Ensures the image covers the entire viewport */
+    background-size: cover;
     color: #333;
     display: flex;
     flex-direction: column;
@@ -11,25 +11,56 @@ body {
     backdrop-filter: brightness(0.3);
 }
 
-/* Optional: Add overlay for text readability */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%; /* Ensures the body takes the full width */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+main {
+    width: 100vw; /* Full viewport width */
+    max-width: 100%; /* Prevents any additional overflow */
+    padding: 1rem; /* Maintain padding inside the content */
+    box-sizing: border-box; /* Includes padding in the width calculation */
+}
+
+
 
 
 header {
-    /* Sky blue for the header */
-
     padding: 0rem;
     text-align: center;
     color: white;
     font-weight: bold;
-
 }
+
+header {
+    width: 100%;
+     /* Ensure it takes the full height of the viewport */
+    background-size: cover; /* Scale the background to cover the entire header */
+    background-position: center; /* Center the background image */
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    text-align: center;
+    padding-bottom: 5px;
+}
+@media (max-width: 600px) { /* For smaller screens */
+    header {
+        height: auto; /* Adjust height to content if needed */
+        padding-bottom: 5px; /* Add some padding */
+    }
+}
+
+
 
 main {
     padding: 1rem;
-    max-width: 800px;
+    max-width: 600px;
     margin: auto;
-    flex: 1; /* Ensures main takes up available space */
-    background-color: #ffffff; /* White background for contrast */
+    flex: 1;
+    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -38,7 +69,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #f5f5f5; /* Light gray for cards */
+    background-color: #f5f5f5;
     margin: 1rem 0;
     padding: 1rem;
     border-radius: 10px;
@@ -48,15 +79,15 @@ main {
 .tiffin-info h3 {
     margin: 0;
     font-size: 1.2rem;
-    color: #2e8b57; /* Sea green for headings */
+    color: #2e8b57;
 }
 
 .tiffin-info li {
     margin: 0;
-    left-padding: 1rem;
     font-size: 1rem;
-    color: #11111; /* Sea green for headings */
+    color: #111;
 }
+
 .quantity-selector {
     display: inline-flex;
     align-items: center;
@@ -64,29 +95,25 @@ main {
 }
 
 .quantity-selector button {
-    background-color: #f9d854; /* Light salmon for buttons */
+    background-color: #f9d854;
     color: white;
     border: none;
-    padding: 0.5rem;
-    font-size: 1rem;
-    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 10px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ccc;
     border-radius: 5px;
-    transition: background-color 0.3s;
-    font-size: 1.5rem; /* Adjust font size */
-    padding: 10px; /* Add padding for a consistent look */
-    width: 25px; /* Set a consistent width for buttons */
-    height: 25px; /* Set a consistent height for buttons */
-    display: flex; /* Make the button a flex container */
-    align-items: center; /* Center-align content vertically */
-    justify-content: center; /* Center-align content horizontally */
-    border: 2px solid #ccc; /* Optional: Add a border */
-    border-radius: 5px; /* Optional: Round corners */
-    cursor: pointer; /* Add a pointer cursor for interactivity */
+    cursor: pointer;
     margin-top: 15px;
+    transition: background-color 0.3s;
 }
 
 .quantity-selector button:hover {
-    background-color: #ff7f50; /* Coral for hover state */
+    background-color: #ff7f50;
 }
 
 .quantity-selector input {
@@ -94,13 +121,13 @@ main {
     text-align: center;
     border: 1px solid #ddd;
     border-radius: 5px;
-    background-color: #fffaf0; /* Floral white for input background */
+    background-color: #fffaf0;
 }
 
 button {
     display: block;
     margin: 2rem auto;
-    background-color: #f9d854; /* Light salmon for primary buttons */
+    background-color: #f9d854;
     color: white;
     border: none;
     padding: 0.75rem 2rem;
@@ -111,7 +138,7 @@ button {
 }
 
 button:hover {
-    background-color: #ff7f50; /* Coral for hover state */
+    background-color: #ff7f50;
     transform: scale(1.05);
 }
 
@@ -120,7 +147,7 @@ button:hover {
     text-align: center;
     font-size: 1.2rem;
     font-weight: bold;
-    color: #2e8b57; /* Sea green for summary text */
+    color: #2e8b57;
 }
 
 .form-section {
@@ -130,27 +157,21 @@ button:hover {
 footer {
     text-align: center;
     padding: 1rem;
-    background-color: #333; /* Steel blue for footer */
+    background-color: #333;
     color: white;
     margin-top: 2rem;
-    flex-shrink: 0; /* Ensures footer stays at the bottom */
+    flex-shrink: 0;
 }
 
 input[type="text"], input[type="tel"], select {
-
     width: 100%;
     padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid #ddd;
     border-radius: 5px;
-    background-color: #f0fff0; /* Honeydew for input fields */
+    background-color: #f0fff0;
 }
 
-@media (max-width: 600px) {
-    button {
-        width: 50%;
-    }
-}
 
 .thank-you-page .qr-code {
     text-align: center;
@@ -172,29 +193,32 @@ input[type="text"], input[type="tel"], select {
         width: 80%;
     }
 }
+
 .timer {
-    font-size: 1.5rem;
-    color: #ff4500; /* Orange-red for visibility */
-    margin-left: 180px;
+    font-size: 1.1rem;
+    color: #ff4500;
+    padding-left: 10px;
     font-weight: bold;
 }
 
 #tiffin-options input[type="text"], .count-box {
-    font-size: 1.2rem; /* Increase the font size */
-    font-weight: bold; /* Make the text bold */
-    text-align: center; /* Center-align the text */
-    padding: 10px; /* Add padding for better appearance */
-    width: 20px; /* Set a consistent width for the box */
-    height: 20px; /* Set a consistent height for the box */
-    border: 2px solid #ccc; /* Optional: Add a border */
-    border-radius: 5px; /* Optional: Round corners */
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
 }
 
 #student-details input[type="text"], .count-box {
-    padding: 5px; /* Add padding for better appearance */
-    
+    padding: 5px;
 }
+
 #mobie input[type="text"], .count-box {
-    padding: 5px; /* Add padding for better appearance */
-    
+    padding: 5px;
 }
+
+
+
