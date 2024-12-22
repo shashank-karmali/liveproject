@@ -18,30 +18,28 @@ function updateQuantity(inputId, operation, mealType) {
 }
 
 function updateTotalPrice() {
-    const vegQuantity = parseInt(document.getElementById('veg-quantity').value);
-    const nonvegQuantity = parseInt(document.getElementById('nonveg-quantity').value);
-    const specialQuantity = parseInt(document.getElementById('special-quantity').value);
+    const quantities = ['veg', 'nonveg', 'special'].map(type => ({
+        type,
+        quantity: parseInt(document.getElementById(`${type}-quantity`).value)
+    }));
 
-    const totalPrice = (vegQuantity * mealPrices.veg) +
-                       (nonvegQuantity * mealPrices.nonveg) +
-                       (specialQuantity * mealPrices.special);
+    const totalPrice = quantities.reduce((total, item) => total + (item.quantity * mealPrices[item.type]), 0);
 
     document.getElementById('total-price').innerText = `Total Price: ₹${totalPrice}`;
+    document.getElementById('total-price-display').innerText = `₹${totalPrice}`;
+    
+    const amountToPayElement = document.getElementById('amount-to-pay');
+    if (amountToPayElement) {
+        amountToPayElement.innerText = `₹${totalPrice}`;
+    }
 }
 
 function showDetailsForm() {
-    const vegQuantity = parseInt(document.getElementById('veg-quantity').value);
-    const nonvegQuantity = parseInt(document.getElementById('nonveg-quantity').value);
-    const specialQuantity = parseInt(document.getElementById('special-quantity').value);
-
-    const totalQuantity = vegQuantity + nonvegQuantity + specialQuantity;
+    const totalQuantity = ['veg', 'nonveg', 'special'].reduce((total, type) =>
+        total + parseInt(document.getElementById(`${type}-quantity`).value), 0);
 
     if (totalQuantity > 0) {
-        const totalPrice = (vegQuantity * mealPrices.veg) +
-                           (nonvegQuantity * mealPrices.nonveg) +
-                           (specialQuantity * mealPrices.special);
-
-        document.getElementById('total-price-display').innerText = `₹${totalPrice}`;
+        updateTotalPrice();
         document.getElementById('tiffin-options').style.display = 'none';
         document.getElementById('student-details').style.display = 'block';
     } else {
@@ -50,52 +48,74 @@ function showDetailsForm() {
 }
 
 function validateForm() {
-    const name = document.getElementById('name').value;
+    const fields = ['name', 'mobile', 'hostel', 'room'];
+    const missingField = fields.find(field => !document.getElementById(field).value);
+
+    if (missingField) {
+        alert(`Please fill the ${missingField} field.`);
+        return false;
+    }
+
     const mobile = document.getElementById('mobile').value;
-    const hostel = document.getElementById('hostel').value;
-    const room = document.getElementById('room').value;
-
-    if (name && mobile && hostel && room) {
-        const vegQuantity = parseInt(document.getElementById('veg-quantity').value);
-        const nonvegQuantity = parseInt(document.getElementById('nonveg-quantity').value);
-        const specialQuantity = parseInt(document.getElementById('special-quantity').value);
-
-        const totalPrice = (vegQuantity * mealPrices.veg) +
-                           (nonvegQuantity * mealPrices.nonveg) +
-                           (specialQuantity * mealPrices.special);
-
-        alert('Order placed successfully!');
-        document.getElementById('student-details').style.display = 'none';
-        document.getElementById('thank-you-page').style.display = 'block';
-        document.querySelector('.qr-code').style.textAlign = 'center'; // Center QR code
-        document.querySelector('.qr-code').style.marginTop = '20px';
-
-        // Display total amount in large size
-        const totalAmount = document.createElement('p');
-        totalAmount.textContent = `Amount to Pay: ₹${totalPrice}`;
-        totalAmount.style.textAlign = 'center';
-        totalAmount.style.marginTop = '20px';
-        totalAmount.style.fontSize = '1.5rem';
-        totalAmount.style.fontWeight = 'bold';
-        document.getElementById('thank-you-page').appendChild(totalAmount);
-
-        const note = document.createElement('p');
-
-        note.textContent = 'Kindly put your mobile number in the remarks';
-        note.style.textAlign = 'center';
-        note.style.marginTop = '10px';
-        note.style.fontSize = '1rem';
-        note.style.fontWeight = '1rem';
-        document.getElementById('thank-you-page').appendChild(note); // Add note to thank you page
+    if (!/^\d{10}$/.test(mobile)) {
+        alert('Please enter a valid 10-digit mobile number.');
         return false;
+    }
+
+    alert('Order placed successfully!');
+    sendToGoogleSheets();
+    return false;
+}
+
+function sendToGoogleSheets() {
+    const data = {
+        name: document.getElementById('name').value,
+        mobile: document.getElementById('mobile').value,
+        hostel: document.getElementById('hostel').value,
+        room: document.getElementById('room').value,
+        vegQuantity: parseInt(document.getElementById('veg-quantity').value),
+        nonvegQuantity: parseInt(document.getElementById('nonveg-quantity').value),
+        specialQuantity: parseInt(document.getElementById('special-quantity').value),
+        totalPrice: parseInt(document.getElementById('total-price-display').innerText.replace('₹', ''))
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbw1TyUWA5hKGOJCwquZsLgEXimblXZk84yG3mkHBJPbAsZtDrf73Tc_ojUkq_xxMWmgfw/exec", {
+        method: "POST",
+        body: new URLSearchParams(data)
+    })
+        .then(response => response.text())
+        .then(result => console.log("Success:", result))
+        .catch(error => console.error("Error:", error));
+
+    document.getElementById('student-details').style.display = 'none';
+    document.getElementById('thank-you-page').style.display = 'block';
+}
+
+// Set the deadline time to today's 8:00 PM
+const deadline = new Date();
+deadline.setHours(24, 0, 0, 0); // 20:00 is 8 PM
+
+// Update timer every second
+function updateTimer() {
+    const now = new Date();
+    const timeRemaining = Math.max(0, deadline - now); // Calculate time left in milliseconds
+
+    const hours = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((timeRemaining / (1000 * 60)) % 60);
+    const seconds = Math.floor((timeRemaining / 1000) % 60);
+
+    const timerElement = document.getElementById('timer');
+    const nextButton = document.getElementById('nextButton');
+
+    if (timeRemaining > 0) {
+        // Update timer display (hours, minutes, seconds)
+        timerElement.textContent = `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     } else {
-        alert('Please fill all the details');
-        return false;
+        // Time's up: Disable the button
+        timerElement.textContent = "Time's up!";
+        nextButton.disabled = true;
     }
 }
 
-
-function goBack() {
-    document.getElementById('student-details').style.display = 'none';
-    document.getElementById('tiffin-options').style.display = 'block';
-}
+// Start the timer update loop
+setInterval(updateTimer, 1000);
