@@ -119,3 +119,12 @@ function updateTimer() {
 
 // Start the timer update loop
 setInterval(updateTimer, 1000);
+
+function goBack() {
+    // Hide the student details section
+    document.getElementById('student-details').style.display = 'none';
+    
+    // Show the tiffin options section
+    document.getElementById('tiffin-options').style.display = 'block';
+}
+
