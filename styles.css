@@ -72,6 +72,17 @@ main {
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
+    font-size: 1.5rem; /* Adjust font size */
+    padding: 10px; /* Add padding for a consistent look */
+    width: 25px; /* Set a consistent width for buttons */
+    height: 25px; /* Set a consistent height for buttons */
+    display: flex; /* Make the button a flex container */
+    align-items: center; /* Center-align content vertically */
+    justify-content: center; /* Center-align content horizontally */
+    border: 2px solid #ccc; /* Optional: Add a border */
+    border-radius: 5px; /* Optional: Round corners */
+    cursor: pointer; /* Add a pointer cursor for interactivity */
+    margin-top: 15px;
 }
 
 .quantity-selector button:hover {
@@ -126,6 +137,7 @@ footer {
 }
 
 input[type="text"], input[type="tel"], select {
+
     width: 100%;
     padding: 0.5rem;
     margin-bottom: 1rem;
@@ -138,4 +150,51 @@ input[type="text"], input[type="tel"], select {
     button {
         width: 50%;
     }
+}
+
+.thank-you-page .qr-code {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.thank-you-page .note {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 1rem;
+        width: 90%;
+    }
+    button {
+        width: 80%;
+    }
+}
+.timer {
+    font-size: 1.5rem;
+    color: #ff4500; /* Orange-red for visibility */
+    margin-left: 180px;
+    font-weight: bold;
+}
+
+#tiffin-options input[type="text"], .count-box {
+    font-size: 1.2rem; /* Increase the font size */
+    font-weight: bold; /* Make the text bold */
+    text-align: center; /* Center-align the text */
+    padding: 10px; /* Add padding for better appearance */
+    width: 20px; /* Set a consistent width for the box */
+    height: 20px; /* Set a consistent height for the box */
+    border: 2px solid #ccc; /* Optional: Add a border */
+    border-radius: 5px; /* Optional: Round corners */
+}
+
+#student-details input[type="text"], .count-box {
+    padding: 5px; /* Add padding for better appearance */
+    
+}
+#mobie input[type="text"], .count-box {
+    padding: 5px; /* Add padding for better appearance */
+    
 }
