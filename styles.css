@@ -51,6 +51,11 @@ header {
         display: flex;
         background-size: cover; /* Scale the background to cover the entire header */
         background-position: center; /* Center the background image */
+        overflow: hidden; /* Prevent scrolling within the header */
+        
+    }
+    .note{
+        font-size: 0.5rem;
     }
 }
 
