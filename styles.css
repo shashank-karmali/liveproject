@@ -26,14 +26,10 @@ main {
 }
 
 
-
-
-header {
-    padding: 0rem;
-    text-align: center;
-    color: white;
-    font-weight: bold;
+.note h3{
+    color: #EE4B2B;
 }
+
 
 header {
     width: 100%;
@@ -45,15 +41,23 @@ header {
     justify-content: center; /* Center content horizontally */
     text-align: center;
     padding-bottom: 5px;
+    overflow: hidden; /* Prevent scrolling within the header */
 }
 @media (max-width: 600px) { /* For smaller screens */
     header {
         height: auto; /* Adjust height to content if needed */
+        width:100%;
         padding-bottom: 5px; /* Add some padding */
+        display: flex;
+        background-size: cover; /* Scale the background to cover the entire header */
+        background-position: center; /* Center the background image */
     }
 }
 
-
+.note {
+    color: red; /* Changes text color to red */
+    font-weight: bold; /* Keeps the text bold as specified in the HTML */
+}
 
 main {
     padding: 1rem;
