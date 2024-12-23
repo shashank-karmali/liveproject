@@ -30,9 +30,9 @@ main {
     color: #EE4B2B;
 }
 
-
 header {
-    width: 100%;
+    
+    overflow-x : hidden;
      /* Ensure it takes the full height of the viewport */
     background-size: cover; /* Scale the background to cover the entire header */
     background-position: center; /* Center the background image */
@@ -40,20 +40,30 @@ header {
     align-items: center; /* Center content vertically */
     justify-content: center; /* Center content horizontally */
     text-align: center;
-    padding-bottom: 5px;
-    overflow: hidden; /* Prevent scrolling within the header */
+    padding: 5px;
+     /* Prevent scrolling within the header */
 }
-@media (max-width: 600px) { /* For smaller screens */
-    header {
-        height: auto; /* Adjust height to content if needed */
-        width:100%;
-        padding-bottom: 5px; /* Add some padding */
-        display: flex;
-        background-size: cover; /* Scale the background to cover the entire header */
-        background-position: center; /* Center the background image */
-        overflow: hidden; /* Prevent scrolling within the header */
-        
+header img {
+        max-width: 100%;
+        height: 10rem;
+        object-fit: contain; /* Ensures the image scales while maintaining aspect ratio */
+        object-position: center; /* Centers the image */
     }
+
+@media (max-width: 600px) {
+    header {
+        padding-bottom: 5px;
+        padding-top: 5px;
+    }
+    header img {
+        max-width: 100%; /* Slightly reduce the size for smaller screens */
+        object-position: center;
+        height: auto;
+    }
+}
+
+@media (max-width: 600px) { /* For smaller screens */
+    
     .note{
         font-size: 0.5rem;
     }
@@ -196,7 +206,7 @@ input[type="text"], input[type="tel"], select {
 @media (max-width: 600px) {
     main {
         padding: 1rem;
-        width: 90%;
+        width: 95%;
     }
     button {
         width: 80%;
