@@ -62,7 +62,6 @@ function validateForm() {
         return false;
     }
 
-    alert('Order placed successfully!');
     sendToGoogleSheets();
     return false;
 }
