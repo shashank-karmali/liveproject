@@ -31,17 +31,12 @@ main {
 }
 
 header {
-    
-    overflow-x : hidden;
-     /* Ensure it takes the full height of the viewport */
-    background-size: cover; /* Scale the background to cover the entire header */
-    background-position: center; /* Center the background image */
+    width: 100%;
     display: flex;
-    align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horizontally */
-    text-align: center;
-    padding: 5px;
-     /* Prevent scrolling within the header */
+    justify-content: center;
+    align-items: center;
+    /* Optional, add background color if needed */
+    padding: 5px; /* Add padding for better spacing */
 }
 header img {
         max-width: 100%;
@@ -52,8 +47,7 @@ header img {
 
 @media (max-width: 600px) {
     header {
-        padding-bottom: 5px;
-        padding-top: 5px;
+        padding: 5px;
     }
     header img {
         max-width: 100%; /* Slightly reduce the size for smaller screens */
