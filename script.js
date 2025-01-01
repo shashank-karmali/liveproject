@@ -114,6 +114,7 @@ function updateTimer() {
         // Time's up: Disable the button and update the message
         timerElement.textContent = "00:00:00";
         nextButton.disabled = true;
+        nextButton.classList.add('disabled'); // Add the CSS class
         orderMessage.innerHTML = `<h4>Kitchen Closed</h4>`;
     }
 }
@@ -122,8 +123,6 @@ function updateTimer() {
 setInterval(updateTimer, 1000);
 
 
-// Start the timer update loop
-setInterval(updateTimer, 1000);
 
 function goBack() {
     // Hide the student details section
