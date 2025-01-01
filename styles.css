@@ -233,5 +233,11 @@ input[type="text"], input[type="tel"], select {
     padding: 5px;
 }
 
+button.disabled {
+    background-color: grey; /* Change to desired color */
+    color: white;
+    cursor: not-allowed;
+    border: none;
+}
 
 
