@@ -1,7 +1,7 @@
 const mealPrices = {
-    veg: 100,
-    nonveg: 150,
-    special: 200
+    veg: 130,
+    nonveg: 130,
+    special: 130
 };
 
 function updateQuantity(inputId, operation, mealType) {
