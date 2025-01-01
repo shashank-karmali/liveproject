@@ -92,7 +92,7 @@ function sendToGoogleSheets() {
 
 // Set the deadline time to today's 8:00 PM
 const deadline = new Date();
-deadline.setHours(24, 0, 0, 0); // 20:00 is 8 PM
+deadline.setHours(14, 0, 0, 0); // 20:00 is 8 PM
 
 // Update timer every second
 function updateTimer() {
