@@ -1,7 +1,11 @@
 const mealPrices = {
     veg: 150,
     nonveg: 180,
-    special: 0
+    special: 0,
+    chaat1: 100,
+    chaat2: 100,
+    chaat3: 100,
+    chaat4: 100
 };
 
 function updateQuantity(inputId, operation, mealType) {
@@ -18,7 +22,7 @@ function updateQuantity(inputId, operation, mealType) {
 }
 
 function updateTotalPrice() {
-    const quantities = ['veg', 'nonveg', 'special'].map(type => ({
+    const quantities = ['veg', 'nonveg', 'special','chaat1','chaat2','chaat3','chaat4'].map(type => ({
         type,
         quantity: parseInt(document.getElementById(`${type}-quantity`).value)
     }));
@@ -35,7 +39,7 @@ function updateTotalPrice() {
 }
 
 function showDetailsForm() {
-    const totalQuantity = ['veg', 'nonveg', 'special'].reduce((total, type) =>
+    const totalQuantity = ['veg', 'nonveg', 'special','chaat1','chaat2','chaat3','chaat4'].reduce((total, type) =>
         total + parseInt(document.getElementById(`${type}-quantity`).value), 0);
 
     if (totalQuantity > 0) {
@@ -75,10 +79,14 @@ function sendToGoogleSheets() {
         vegQuantity: parseInt(document.getElementById('veg-quantity').value),
         nonvegQuantity: parseInt(document.getElementById('nonveg-quantity').value),
         specialQuantity: parseInt(document.getElementById('special-quantity').value),
+        chaat1Quantity: parseInt(document.getElementById('chaat1-quantity').value),
+        chaat2Quantity: parseInt(document.getElementById('chaat2-quantity').value),
+        chaat3Quantity: parseInt(document.getElementById('chaat3-quantity').value),
+        chaat4Quantity: parseInt(document.getElementById('chaat4-quantity').value),
         totalPrice: parseInt(document.getElementById('total-price-display').innerText.replace('₹', ''))
     };
 
-    fetch("https://script.google.com/macros/s/AKfycbw1TyUWA5hKGOJCwquZsLgEXimblXZk84yG3mkHBJPbAsZtDrf73Tc_ojUkq_xxMWmgfw/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbzjvYY52ybOIZAlAQhSFuk5gTM1y0OTCCyVN24DEZ4K1_3ogK6V5OJ376UugqHrg3lg/exec", {  // Replace with your Apps Script URL
         method: "POST",
         body: new URLSearchParams(data)
     })
@@ -90,9 +98,10 @@ function sendToGoogleSheets() {
     document.getElementById('thank-you-page').style.display = 'block';
 }
 
+
 // Set the deadline time to today's 8:00 PM
 const deadline = new Date();
-deadline.setHours(14, 30, 0, 0); // 20:00 is 8 PM
+deadline.setHours(24, 30, 0, 0); // 20:00 is 8 PM
 
 // Update timer every second
 function updateTimer() {
@@ -131,4 +140,3 @@ function goBack() {
     // Show the tiffin options section
     document.getElementById('tiffin-options').style.display = 'block';
 }
-
