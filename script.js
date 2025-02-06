@@ -1,9 +1,9 @@
 const mealPrices = {
-    veg: 130,
-    nonveg: 130,
-    special: 130,
-    chaatFirst: 0,
-    chaatSecond: 0,
+    veg: 160,
+    nonveg: 190,
+    special: 0,
+    chaatFirst: 100,
+    chaatSecond: 100,
     chaatThird: 0,
     chaatFourth: 0
 };
