@@ -1,7 +1,7 @@
 const mealPrices = {
-    veg: 130,
-    nonveg: 130,
-    special: 130,
+    veg: 120,
+    nonveg: 120,
+    special: 120,
     chaatFirst: 0,
     chaatSecond: 0,
     chaatThird: 0,
