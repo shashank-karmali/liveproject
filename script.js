@@ -1,7 +1,7 @@
 const mealPrices = {
-    veg: 160,
-    nonveg: 0,
-    special: 0,
+    veg: 130,
+    nonveg: 130,
+    special: 130,
     chaatFirst: 0,
     chaatSecond: 0,
     chaatThird: 0,
@@ -101,7 +101,7 @@ function sendToGoogleSheets() {
 
 // Set the deadline time to today's 8:00 PM
 const deadline = new Date();
-deadline.setHours(14, 00, 0, 0); // 20:00 is 8 PM
+deadline.setHours(14, 30, 0, 0); // 20:00 is 8 PM
 
 // Update timer every second
 function updateTimer() {
